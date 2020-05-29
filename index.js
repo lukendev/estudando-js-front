@@ -1,6 +1,9 @@
 const nomePetshop = "Petshop DH";
 const body = document.querySelector('body')
 const divTela = document.querySelector('#tela')
+const btnClick = document.getElementById('acao')
+const btnAddPet = document.getElementById('btnAddPet')
+const btnListarPet = document.getElementById('btnListarPet')
 
 const h1Titulo = document.createElement('h1')
 h1Titulo.innerText = nomePetshop
@@ -8,6 +11,7 @@ h1Titulo.style.textAlign = 'center'
 body.insertBefore(h1Titulo, divTela)
 // body.innerHTML += `<h1>${nomePetshop} </h1>`
 // document.querySelector('h1').style.textAlign = 'center'
+
 
 console.log(`** ${nomePetshop} **`);
 
@@ -78,9 +82,8 @@ const listarPets = () => {
 
     divTela.innerHTML += `
     <ul>
-      <h5>${pet.nome}</h5>
 
-      <li><span class="titulo">Nome</span>: ${pet.nome}</li>
+      <li class="nome"><span class="titulo">Nome</span>: ${pet.nome}</li>
       <li><span class="titulo">Tipo</span>: ${pet.tipo}</li>
       <li><span class="titulo">Raça</span>: ${pet.raca}</li>
       <li><span class="titulo">Idade:</span> ${pet.idade} anos</li>
@@ -101,6 +104,7 @@ const listarPets = () => {
     Serviços: ${pet.servicos}
     `);
   }
+  nomePet()
   console.log("------------------------");
 }
 
@@ -172,7 +176,6 @@ const adicionarPet = ()  => {
 };
 
 
-
 const darBanhoPet = pet => {
   pet.servicos.push("banho");
   console.log(`${pet.nome} está de banho tomado!`);
@@ -206,3 +209,52 @@ const atenderPet = (pet, servicos) => {
 
 // listarPets();
 contarVacinados();
+
+function oi(){
+  document.getElementById('teste').style.display = 'none'
+}
+
+btnAddPet.addEventListener('click', () =>{
+  adicionarPet()
+})
+
+btnListarPet.onclick = () => {
+  listarPets()
+}
+
+function nomePet() {
+  const listaNome = document.querySelectorAll(".nome");
+  listaNome.forEach((item) => {
+    item.onmouseover = () => {
+      item.style.cssText = "font-size:20px; color:blue";
+    };
+
+    item.onmouseout = () => {
+      item.style.cssText = "font-size:16px; color:black";
+    };
+  });
+}
+
+
+
+// const destaqueNome = document.querySelectorAll('.nomePet')
+// destaqueNome.forEach((item) => {
+//   item.onmouseover = () => {
+//     item.style.cssText = "font-size: 20; color: blue"
+//   }
+
+//   item.onmouseout = () => {
+//     item.style.cssText = "font-size: 16; color: black"
+//   }
+// })
+
+// btnClick.addEventListener("mouseover", () => {
+//   alert('Estou dentro do botão')
+// });
+
+// btnClick.addEventListener("click", () => {
+//   alert('Estou dentro do botão')
+// });
+// btnClick.onclick = () => {
+//   alert('Estou dentro do botao')
+// }
